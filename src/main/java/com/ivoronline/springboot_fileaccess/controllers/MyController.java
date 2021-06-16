@@ -18,6 +18,16 @@ public class MyController {
   }
 
   //==================================================================================
+  // READ FILE GOOD
+  //==================================================================================
+  private String readFileGood() throws FileNotFoundException {
+    InputStream    inputStream = getClass().getResourceAsStream("/Test.txt");
+    BufferedReader reader      = new BufferedReader(new InputStreamReader(inputStream));
+    String         content     = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+    return content;
+  }
+
+  //==================================================================================
   // READ FILE BAD
   //==================================================================================
   private String readFileBad() throws FileNotFoundException {
@@ -25,16 +35,6 @@ public class MyController {
   //FileReader     fileReader = new FileReader("/Test.txt");        //Root of JAR still not working
     BufferedReader reader     = new BufferedReader(fileReader);
     String         content    = reader.lines().collect(Collectors.joining(System.lineSeparator()));
-    return content;
-  }
-
-  //==================================================================================
-  // READ FILE GOOD
-  //==================================================================================
-  private String readFileGood() throws FileNotFoundException {
-    InputStream    inputStream = getClass().getResourceAsStream("/Test.txt");
-    BufferedReader reader      = new BufferedReader(new InputStreamReader(inputStream));
-    String         content     = reader.lines().collect(Collectors.joining(System.lineSeparator()));
     return content;
   }
 
